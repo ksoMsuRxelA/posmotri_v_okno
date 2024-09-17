@@ -51,7 +51,7 @@ ol {
 
 .content {
   inline-size: 1140px;
-  block-size: 534px;
+  /* min-block-size: 536px; */
   margin: auto;
   display: flex;
   align-items: flex-end;
@@ -84,6 +84,7 @@ ol {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-block-end: 3px;
 }
 
 .search-form__fieldset {
@@ -96,7 +97,7 @@ ol {
 }
 
 .search-form__fieldset + .search-form__fieldset {
-  padding-inline-start: 6px;
+  padding-inline-start: 4px;
 }
 
 .search-form__fieldset-title {
@@ -239,25 +240,26 @@ ol {
   block-size: 100%;
   flex-basis: 399px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .content__list {
   position: relative;
-  block-size: 302px;
+  block-size: 298px;
   overflow-y: auto;
 }
 
 .title {
   inline-size: 260px;
-  block-size: 210px;
   font-family: "Oswald", sans-serif;
   font-size: 75px;
   font-weight: 700;
-  line-height: 0.94;
+  line-height: 0.9334;
   text-align: left;
   margin-inline-start: 2px;
   margin-block-start: 3px;
-  margin-block-end: 21px;
+  margin-block-end: 26px;
   text-transform: uppercase;
 }
 
@@ -342,7 +344,7 @@ ol {
 
 .more-button {
   margin-block-start: 31px;
-  margin-block-end: 2px;
+  margin-block-end: 3px;
   margin-inline-start: 2px;
   margin-inline-end: 2px;
   inline-size: 399px;
