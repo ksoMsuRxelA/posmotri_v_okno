@@ -51,7 +51,6 @@ ol {
 
 .content {
   inline-size: 1140px;
-  /* min-block-size: 536px; */
   margin: auto;
   display: flex;
   align-items: flex-end;
