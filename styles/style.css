@@ -24,7 +24,7 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
   display: flex;
@@ -55,7 +55,7 @@ ol {
   margin: auto;
   display: flex;
   align-items: flex-end;
-  gap: 30px;
+  gap: 28px;
 }
 
 .result {
@@ -84,7 +84,6 @@ ol {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 40px;
 }
 
 .search-form__fieldset {
@@ -96,17 +95,20 @@ ol {
   border: none;
 }
 
+.search-form__fieldset + .search-form__fieldset {
+  padding-inline-start: 6px;
+}
+
 .search-form__fieldset-title {
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.2;
   text-align: left;
-  margin-block-end: 5px;
 }
 
 .search-form__label {
-  width: fit-content;
+  inline-size: fit-content;
   display: flex;
 }
 
@@ -122,13 +124,14 @@ ol {
   border-width: 1px 0px 1px 0px;
   border-style: solid;
   appearance: none;
-  font-family: Fira Sans Condensed;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.2;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
   text-align: left;
-  color: #fff;
+  color: currentColor;
   cursor: text;
+  padding-inline-start: 0;
 }
 
 .search-form__textfield:focus {
@@ -141,8 +144,8 @@ ol {
 
 .search-form__pseudo-checkbox {
   margin-inline-end: 5px;
-  width: 19px;
-  height: 19px;
+  inline-size: 19px;
+  block-size: 19px;
   background-color: transparent;
   border: 1px solid #fff;
   cursor: pointer;
@@ -155,11 +158,22 @@ ol {
   text-underline-offset: 2px;
 }
 
-.search-form__checkbox:active+.search-form__pseudo-checkbox::before {
-  content: '';
+.search-form__checkbox:active + .search-form__pseudo-checkbox::before {
+  content: "";
   display: block;
-  width: 15px;
-  height: 15px;
+  inline-size: 15px;
+  block-size: 15px;
+  background-color: #fff;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  content: "";
+  display: block;
+  inline-size: 15px;
+  block-size: 15px;
   background-color: #fff;
   position: absolute;
   top: 1px;
@@ -167,60 +181,83 @@ ol {
 }
 
 .search-form__checkbox-list {
+  inline-size: 213px;
+  margin-block-end: 6px;
   display: flex;
   justify-content: space-between;
 }
 
 .search-form__checkbox-list .search-form__label {
-  inline-size: 65px;
+  inline-size: 63px;
   block-size: 20px;
   align-items: center;
 }
 
 .search-form__checkbox-list .search-form__label:has(:focus-visible) {
   outline: 1px solid #fff;
-  outline-offset: 1px;
+  outline-offset: 2px;
 }
 
-.search-form__checkbox-list .search-form__label:not(:last-of-type) {
-  margin-inline-end: 15px;
-}
-
-.search-form__submit-button {
-  inline-size: 194px;
-  block-size: 34px;
+.button {
+  padding: 0;
   background-color: transparent;
   border: 1px solid #fff;
-  font-family: Fira Sans Condensed;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 1.2px;
   text-align: center;
   color: #fff;
+}
+
+.button:hover {
   cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.button:active {
+  background-color: rgba(84, 80, 80, 1);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__submit-button {
+  inline-size: 194px;
+  block-size: 34px;
 }
 
 .content__details {
   block-size: 100%;
+  flex-basis: 399px;
   flex-grow: 1;
-  overflow: hidden;
 }
 
 .content__list {
   position: relative;
-  block-size: 298px;
-  overflow-y: scroll;
+  block-size: 302px;
+  overflow-y: auto;
 }
 
 .title {
-  width: 260px;
-  height: 210px;
-  font-family: Oswald;
+  inline-size: 260px;
+  block-size: 210px;
+  font-family: "Oswald", sans-serif;
   font-size: 75px;
   font-weight: 700;
   line-height: 0.94;
   text-align: left;
-  margin-block-end: 26px;
+  margin-inline-start: 2px;
+  margin-block-start: 3px;
+  margin-block-end: 21px;
   text-transform: uppercase;
 }
 
@@ -228,13 +265,34 @@ ol {
   color: rgba(84, 80, 80, 1);
 }
 
-.content__list-item:not(:nth-child(5)) {
-  margin-block-end: 32px;
+.content__list li:not(:nth-last-child(-n + 2)) {
+  margin-block-end: 31px;
 }
 
 .content__card-link {
+  min-block-size: 107px;
+  margin: 2px;
+  display: block;
   text-decoration: none;
   color: #fff;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 1px;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+}
+
+.content__card-link_current {
+  background-color: rgba(84, 80, 80, 1);
 }
 
 .content__video-card {
@@ -243,28 +301,39 @@ ol {
 }
 
 .content__video-card-description-container {
+  margin: 4px 0 0 1px;
+  padding-block-end: 2px;
+  max-block-size: inherit;
+  flex-basis: 200px;
   flex-grow: 1;
 }
 
 .content__video-card-title {
+  inline-size: 199px;
   text-transform: uppercase;
-  font-family: Oswald;
+  font-family: "Oswald", sans-serif;
   font-size: 30px;
   font-weight: 700;
   line-height: 1;
   text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .content__video-card-description {
-  margin-block-start: 6px;
-  font-family: Fira Sans Condensed;
+  margin-block-start: 4px;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 0.9;
   text-align: left;
+  white-space: initial;
 }
 
 .content__video-card-thumbnail {
+  margin: 2px;
+  flex-basis: 194px;
   inline-size: 194px;
   block-size: 103px;
   object-fit: cover;
@@ -272,16 +341,10 @@ ol {
 }
 
 .more-button {
-  margin-block-start: 30px;
-  inline-size: 100%;
+  margin-block-start: 31px;
+  margin-block-end: 2px;
+  margin-inline-start: 2px;
+  margin-inline-end: 2px;
+  inline-size: 399px;
   block-size: 34px;
-  background-color: transparent;
-  border: 1px solid #fff;
-  font-family: Fira Sans Condensed;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.2px;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
 }
